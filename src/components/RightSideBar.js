@@ -7,7 +7,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-// import logo from "../pictures/crest.jpg";
 
 export default function RightSideBar(props) {
   const commonStyles = {
@@ -16,14 +15,30 @@ export default function RightSideBar(props) {
     border: 1,
   };
 
-  if(props.imageSource == null){
-    var image = require('../pictures/crest.jpg')
+  if (props.imageSource == null) {
+    var image = require("../pictures/crest.jpg");
   } else {
-    var image =  require('../pictures/' + props.imageSource + '.jpg')
+    var imageLink = require("../pictures/" + props.imageSource.type + ".jpg");
   }
 
-  const handleImage = () => {
-    console.log("Change")
+  if (props.imageSource == null) {
+    var vehName = "Vehicle Database";
+  } else {
+    var vehName = props.imageSource.type
+  }
+
+  if (props.engine == null) {
+    var engineText = "No data Yet";
+  } else {
+    var engineText = props.engine;
+  }
+
+  var wikiLinke = props.wiki
+
+  if (props.desc == null) {
+    var vehDesc = "Welcome to the Canadian Foces Vehicle Database";
+  } else {
+    var vehDesc = props.desc;
   }
 
   return (
@@ -45,36 +60,37 @@ export default function RightSideBar(props) {
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <Container>
-            <h1>Vehicle Data</h1>
+            <h1>{vehName}</h1>
           </Container>
 
-          <Box sx={{ ...commonStyles, height: "300px" }}>
+          <Box sx={{ ...commonStyles }}>
             <Card sx={{}}>
               <CardMedia
                 component="img"
                 alt="Vehicle"
                 height="100%"
                 width="100%"
-                src= {image} 
+                src={imageLink}
+                
               />
               <CardContent p={2}>
-                <Typography gutterBottom variant="h5" component="div">
-                  {console.log(props.imageSource == null)}
-                  {console.log(image)}
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  text-align="center"
+                  p={1}
+                >
+                  <h2>Engine:</h2> {engineText}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   text-align="center"
                 >
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  <h2>Description:</h2> {vehDesc}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-              </CardActions>
             </Card>
           </Box>
         </Stack>

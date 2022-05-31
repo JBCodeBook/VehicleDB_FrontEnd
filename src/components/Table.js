@@ -16,8 +16,6 @@ export default function Table(props) {
   const isInEditMode = true
 
   const handleDeleteClick=(e)=>{
-    // e.preventDefault()
-    console.log(e.row)
     fetch("http://localhost:8080/vehicles/delete",{
     method:"DELETE",
     headers:{"Content-Type":"application/json"},
@@ -26,7 +24,28 @@ export default function Table(props) {
         console.log("vehicle Deleted")
     })
   }
-  
+
+  const handleRowSelect = (e) => {
+        fetch("http://localhost:8080/types/getId?type=" + e,{
+        method:"GET",
+        headers:{"Content-Type":"application/json"}
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+          props.setEngine(res.engine)
+          props.setVehDesc(res.desc)
+        })
+      }
+
+    useEffect(()=>{
+      fetch("http://localhost:8080/vehicles/getAll")
+      .then(res=>res.json())
+      .then((result)=>{
+          setVehicles(result);
+      }
+  )
+  },[])
+
   const columns = [
     { field: 'cfr', headerName: 'CFR', width: 150 },
     { field: 'type', headerName: 'Type', width: 150 },
@@ -62,16 +81,6 @@ export default function Table(props) {
     },
   ]
 
-
-  useEffect(()=>{
-      fetch("http://localhost:8080/vehicles/getAll")
-      .then(res=>res.json())
-      .then((result)=>{
-          setVehicles(result);
-      }
-  )
-  },[])
-
   return (    
     <Box  sx={{
       height: 500,
@@ -89,8 +98,8 @@ export default function Table(props) {
       rows={vehicles} 
       columns={columns}
       onRowClick={ (itm) => {
-        // console.log(itm.row.type)
-        props.setImageSource(itm.row.type)
+        props.setImageSource(itm.row)
+        handleRowSelect(itm.row.type)
       }}
 
       />

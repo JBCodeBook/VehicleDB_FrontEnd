@@ -17,12 +17,15 @@ import LeftSideBar from "./LeftSidebar";
 import RightSideBar from "./RightSideBar";
 
 export default function FloatingActionButtons() {
+  
+
   const [cfr, setCFR] = useState("");
   const [type, setType] = useState("");
   const [types, setTypes] = useState([]);
   const [imgSrc, setImgSrc] = React.useState();
-
   const [open, setOpen] = React.useState(false);
+  const [engine, setEngine] = React.useState();
+  const [vehDesc, setVehDesc] = React.useState();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -133,10 +136,18 @@ export default function FloatingActionButtons() {
             </Grid>
           </Container>
           <Container >
-            <Table setImageSource={setImgSrc}/>
+            <Table 
+            setImageSource={setImgSrc} 
+            setEngine={setEngine} 
+            setVehDesc={setVehDesc} 
+            />
           </Container>
         </Box>
-        <RightSideBar imageSource={imgSrc}/>
+        <RightSideBar 
+        imageSource={imgSrc} 
+        engine={engine}
+        desc={vehDesc} 
+        />
       </Stack>
     </Box>
   );
