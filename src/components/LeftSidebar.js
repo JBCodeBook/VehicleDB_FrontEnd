@@ -1,8 +1,20 @@
 import * as React from 'react';
-import { Box } from '@mui/system';
+import { Box, Container } from '@mui/system';
 
 export default function FloatingActionButtons() {
+
+  const commonStyles = {
+    bgcolor: 'background.paper',
+    borderColor: 'black',
+    m: 1,
+    border: 1,
+  };
+
   return (
-      <Box flex={1} p={2} sx={{ display: { xs: "none", sm:"block"}, bgcolor: '#fc03d3', height: '100%', width: '100%'}} />
+      <Box maxWidth="sm" flex={1} p={2} sx={{ ...commonStyles, display: { xs: "none", sm:"block"},  borderRadius: '16px', width: '100%'}} >
+          <Container>
+            <h1>No idea yet</h1>
+            </Container>
+      </Box>
   );
 }

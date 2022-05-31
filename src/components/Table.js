@@ -4,15 +4,16 @@ import { DataGrid, rowModesModel } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
+import handleImage from './MainBody';
 
-
-export default function App() {
+export default function Table(props) {
 
   const[cfr, setCFR]=useState('')
   const[type, setType]=useState('')
   const[vehicles, setVehicles]=useState([])
-  const isInEditMode = true
+  const[imgtype, setImgType]=useState([])
 
+  const isInEditMode = true
 
   const handleDeleteClick=(e)=>{
     // e.preventDefault()
@@ -25,13 +26,6 @@ export default function App() {
         console.log("vehicle Deleted")
     })
   }
-
-  const rows = [
-    { CFR: '52255', Type: 'LSVW'},
-    { CFR: '22555', Type: 'HLVW'},
-    { CFR: '11223', Type: 'HLVW'},
-    
-  ];
   
   const columns = [
     { field: 'cfr', headerName: 'CFR', width: 150 },
@@ -93,7 +87,12 @@ export default function App() {
       getRowId={(row) => row.cfr}
       density={'compact'}
       rows={vehicles} 
-      columns={columns} 
+      columns={columns}
+      onRowClick={ (itm) => {
+        // console.log(itm.row.type)
+        props.setImageSource(itm.row.type)
+      }}
+
       />
     </Box>
   );
