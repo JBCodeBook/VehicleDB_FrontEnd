@@ -17,8 +17,6 @@ import LeftSideBar from "./LeftSidebar";
 import RightSideBar from "./RightSideBar";
 
 export default function FloatingActionButtons() {
-  
-
   const [cfr, setCFR] = useState("");
   const [type, setType] = useState("");
   const [types, setTypes] = useState([]);
@@ -34,10 +32,6 @@ export default function FloatingActionButtons() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const handleImage = () => {
-    console.log("test")
-    };
 
   const handleClick = (e) => {
     const Vehicle = { cfr: cfr, type: type };
@@ -60,7 +54,6 @@ export default function FloatingActionButtons() {
   }, []);
 
   return (
-
     <Box p={2} sx={{ height: "100%", width: "100%" }}>
       <Stack
         direction="row"
@@ -70,7 +63,7 @@ export default function FloatingActionButtons() {
       >
         <LeftSideBar />
         <Box flex={3}>
-          <Container >
+          <Container>
             <Grid container direction="row" alignItems="flex-end">
               <Grid item xs={4} p={1}>
                 <Button variant="contained" onClick={handleClickOpen}>
@@ -135,19 +128,15 @@ export default function FloatingActionButtons() {
               </Grid>
             </Grid>
           </Container>
-          <Container >
-            <Table 
-            setImageSource={setImgSrc} 
-            setEngine={setEngine} 
-            setVehDesc={setVehDesc} 
+          <Container>
+            <Table
+              setImageSource={setImgSrc}
+              setEngine={setEngine}
+              setVehDesc={setVehDesc}
             />
           </Container>
         </Box>
-        <RightSideBar 
-        imageSource={imgSrc} 
-        engine={engine}
-        desc={vehDesc} 
-        />
+        <RightSideBar imageSource={imgSrc} engine={engine} desc={vehDesc} />
       </Stack>
     </Box>
   );

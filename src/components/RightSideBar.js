@@ -1,9 +1,7 @@
 import * as React from "react";
 import { Box, Container } from "@mui/system";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -16,29 +14,27 @@ export default function RightSideBar(props) {
   };
 
   if (props.imageSource == null) {
-    var image = require("../pictures/crest.jpg");
+    var imageLink = require("../pictures/crest.jpg");
   } else {
-    var imageLink = require("../pictures/" + props.imageSource.type + ".jpg");
+    imageLink = require("../pictures/" + props.imageSource.type + ".jpg");
   }
 
   if (props.imageSource == null) {
     var vehName = "Vehicle Database";
   } else {
-    var vehName = props.imageSource.type
+    vehName = props.imageSource.type;
   }
 
   if (props.engine == null) {
     var engineText = "No data Yet";
   } else {
-    var engineText = props.engine;
+    engineText = props.engine;
   }
-
-  var wikiLinke = props.wiki
 
   if (props.desc == null) {
     var vehDesc = "Welcome to the Canadian Foces Vehicle Database";
   } else {
-    var vehDesc = props.desc;
+    vehDesc = props.desc;
   }
 
   return (
@@ -71,24 +67,22 @@ export default function RightSideBar(props) {
                 height="100%"
                 width="100%"
                 src={imageLink}
-                
               />
               <CardContent p={2}>
-
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   text-align="center"
                   p={1}
                 >
-                  <h2>Engine:</h2> {engineText}
+                  Engine: {engineText}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   text-align="center"
                 >
-                  <h2>Description:</h2> {vehDesc}
+                  Description: {vehDesc}
                 </Typography>
               </CardContent>
             </Card>
