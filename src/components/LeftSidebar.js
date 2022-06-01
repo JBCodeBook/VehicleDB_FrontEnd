@@ -12,9 +12,7 @@ export default function FloatingActionButtons() {
 
   return (
       <Box maxWidth="sm" flex={1} p={2} sx={{ ...commonStyles, display: { xs: "none", sm:"block"},  borderRadius: '16px', width: '100%'}} >
-          <Container>
-            <h1>No idea yet</h1>
-            </Container>
+
       </Box>
   );
 }
