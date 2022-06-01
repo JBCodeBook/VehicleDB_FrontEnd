@@ -2,6 +2,8 @@
 
 # VehicleDB FrontEnd
 
+![Database with vehicles](https://github.com/JBCodeBook/VehicleDB_FrontEnd/blob/master/src/pictures/Cards.png)
+
 React application using Material UI.
 
 ## Description
